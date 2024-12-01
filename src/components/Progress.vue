@@ -1,7 +1,11 @@
 <template>
 	<div class="progress">
-		<h1 class="m-0 wide">温馨提示：那个男人已经解冻了{{ progress }}%了</h1>
-		<h1 class="m-0 phone">那个男人已经解冻{{ progress }}%了</h1>
+		<h1 class="m-0 wide">
+			温馨提示：<a href="https://b23.tv/BV1zZ4y1d7jH">那个男人</a>已经解冻了{{ progress }}%了
+		</h1>
+		<h1 class="m-0 phone">
+			<a href="https://b23.tv/BV1zZ4y1d7jH">那个男人</a>已经解冻{{ progress }}%了
+		</h1>
 	</div>
 </template>
 
@@ -19,8 +23,12 @@ const progress = Math.floor((passedDays / totalDays) * 100);
 .progress {
 	font-weight: bold;
 	text-shadow: 0 0 10px #686868;
-	& > .phone {
+	.phone {
 		display: none;
+	}
+	a {
+		color: #fff;
+		text-decoration: none;
 	}
 }
 
