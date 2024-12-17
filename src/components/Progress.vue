@@ -10,13 +10,30 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue';
+
 const lastSpringFestival = new Date('2024-01-10').getTime();
 const nextSpringFestival = new Date('2025-01-29').getTime();
-const now = new Date().getTime();
 
-const passedDays = Math.floor((now - lastSpringFestival) / (1000 * 60 * 60 * 24));
-const totalDays = Math.floor((nextSpringFestival - lastSpringFestival) / (1000 * 60 * 60 * 24));
-const progress = Math.min(Math.max(Math.floor((passedDays / totalDays) * 100), 0), 100);
+const progress = ref(0);
+
+// 每5分钟刷新一次
+const updataProgress = () => {
+	const now = new Date().getTime();
+	const passedDays = Math.floor((now - lastSpringFestival) / (1000 * 60 * 60 * 24));
+	const totalDays = Math.floor((nextSpringFestival - lastSpringFestival) / (1000 * 60 * 60 * 24));
+	progress.value = Math.min(Math.max(Math.floor((passedDays / totalDays) * 100), 0), 100);
+};
+
+let interval = setInterval(updataProgress, 1000 * 60 * 5);
+
+onMounted(() => {
+	updataProgress();
+});
+
+onUnmounted(() => {
+	clearInterval(interval);
+});
 </script>
 
 <style lang="scss" scoped>
