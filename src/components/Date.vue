@@ -28,10 +28,18 @@ const updateCountdown = () => {
 	const now = new Date().getTime();
 	const distance = target - now;
 
-	countdown.value.days = Math.floor(distance / (1000 * 60 * 60 * 24));
-	countdown.value.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-	countdown.value.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-	countdown.value.seconds = Math.floor((distance % (1000 * 60)) / 1000);
+	countdown.value = {
+		days: Math.floor(distance / (1000 * 60 * 60 * 24)),
+		hours: Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+			.toString()
+			.padStart(2, '0') as unknown as number,
+		minutes: Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
+			.toString()
+			.padStart(2, '0') as unknown as number,
+		seconds: Math.floor((distance % (1000 * 60)) / 1000)
+			.toString()
+			.padStart(2, '0') as unknown as number,
+	};
 
 	if (distance < 0) {
 		clearInterval(interval);
