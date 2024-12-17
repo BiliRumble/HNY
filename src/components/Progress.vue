@@ -16,7 +16,7 @@ const now = new Date().getTime();
 
 const passedDays = Math.floor((now - lastSpringFestival) / (1000 * 60 * 60 * 24));
 const totalDays = Math.floor((nextSpringFestival - lastSpringFestival) / (1000 * 60 * 60 * 24));
-const progress = Math.floor((passedDays / totalDays) * 100);
+const progress = Math.min(Math.max(Math.floor((passedDays / totalDays) * 100), 0), 100);
 </script>
 
 <style lang="scss" scoped>
