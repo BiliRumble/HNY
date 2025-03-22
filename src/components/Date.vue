@@ -16,7 +16,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const target = new Date('2025-01-29 00:00:00').getTime();
+const target = new Date('2026-02-17 00:00:00').getTime();
 const countdown = ref({
 	days: 0,
 	hours: 0,

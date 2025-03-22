@@ -12,8 +12,8 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue';
 
-const lastSpringFestival = new Date('2024-01-10').getTime();
-const nextSpringFestival = new Date('2025-01-29').getTime();
+const lastSpringFestival = new Date('2025-01-29').getTime();
+const nextSpringFestival = new Date('2026-02-17').getTime();
 
 const progress = ref(0);
 
